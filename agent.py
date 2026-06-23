@@ -14,3 +14,8 @@ async def read_index():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     uvicorn.run("agent:app", host="0.0.0.0", port=port, log_level="info")
+from fastapi.responses import FileResponse
+
+@app.get("/")
+async def read_index():
+    return FileResponse('index.html')
