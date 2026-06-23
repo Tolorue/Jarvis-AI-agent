@@ -36,3 +36,11 @@ async def read_index():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     uvicorn.run("agent:app", host="0.0.0.0", port=port, log_level="info")
+    from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # Tady by ideálně měla být adresa tvého webu z Netlify
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
